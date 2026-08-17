@@ -8,4 +8,13 @@
     <UserSecretsId>0bd8eb2e-565e-4baf-8b5b-f87c8c64f5cf</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.JavaScript" Version="13.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\App\MiPlataforma.App.Api\MiPlataforma.App.Api.csproj" />
+    <ProjectReference Include="..\App\MiPlataforma.App.Bff\MiPlataforma.App.Bff.csproj" />
+  </ItemGroup>
+
 </Project>

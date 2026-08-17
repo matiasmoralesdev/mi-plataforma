@@ -1,5 +1,0 @@
-<Solution>
-  <Folder Name="/App/" />
-  <Project Path="MiPlataforma.AppHost/MiPlataforma.AppHost.csproj" />
-  <Project Path="MiPlataforma.ServiceDefaults/MiPlataforma.ServiceDefaults.csproj" />
-</Solution>
