@@ -11,6 +11,16 @@
     <File Path="../../.gitignore" />
     <File Path="../../README.md" />
   </Folder>
+  <Folder Name="/Helpers/" />
+  <Folder Name="/Kernel/">
+    <Project Path="Kernel/MiPlataforma.Kernel/MiPlataforma.Kernel.csproj" Id="aadc627c-1ae0-4920-bf6a-05120358355d" />
+  </Folder>
+  <Folder Name="/Modules/" />
+  <Folder Name="/Modules/Commons/">
+    <Project Path="Modules/Commons/MiPlataforma.Modules.Commons.Application/MiPlataforma.Modules.Commons.Application.csproj" Id="628f5487-69ef-486d-ae36-7f8edbdaea83" />
+    <Project Path="Modules/Commons/MiPlataforma.Modules.Commons.Domain/MiPlataforma.Modules.Commons.Domain.csproj" Id="51d4f4a9-7ccc-498e-a28d-612ff0205750" />
+    <Project Path="Modules/Commons/MiPlataforma.Modules.Commons.Infraestructure/MiPlataforma.Modules.Commons.Infraestructure.csproj" Id="6256c13c-b8df-43f9-a28e-3da5e22e3309" />
+  </Folder>
   <Project Path="MiPlataforma.AppHost/MiPlataforma.AppHost.csproj" />
   <Project Path="MiPlataforma.ServiceDefaults/MiPlataforma.ServiceDefaults.csproj" />
 </Solution>

@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: mi-plataforma-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: mi-plataforma-db
+    ports:
+      - "5432:5432"
+    volumes:
+      # Datos físicos de PostgreSQL en tu PC
+      - ./postgres-data:/var/lib/postgresql/data
+      # Crea la BD interna de Keycloak al inicializar PostgreSQL por primera vez
+      - ./postgres-init/01-create-keycloak-db.sql:/docker-entrypoint-initdb.d/01-create-keycloak-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d mi-plataforma-db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.3
+    container_name: mi-plataforma-keycloak
+    restart: unless-stopped
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      # Themes propios editables desde tu PC.
+      # Se monta en /custom para no ocultar los themes incluidos por Keycloak.
+      - ./keycloak-themes:/opt/keycloak/themes/custom
+    depends_on:
+      postgres:
+        condition: service_healthy
