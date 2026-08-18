@@ -7,6 +7,10 @@
       <Deploy />
     </Project>
   </Folder>
+  <Folder Name="/Elementos de la solución/">
+    <File Path="../../.gitignore" />
+    <File Path="../../README.md" />
+  </Folder>
   <Project Path="MiPlataforma.AppHost/MiPlataforma.AppHost.csproj" />
   <Project Path="MiPlataforma.ServiceDefaults/MiPlataforma.ServiceDefaults.csproj" />
 </Solution>
