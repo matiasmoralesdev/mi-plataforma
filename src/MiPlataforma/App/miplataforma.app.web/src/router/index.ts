@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AppLayout from '@/components/layout/AppLayout.vue';
+import ConfigurationView from '@/views/ConfigurationView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,8 +30,7 @@ const router = createRouter({
         {
           path: 'configuracion',
           name: 'configuracion',
-          component: () => import('@/views/PlaceholderView.vue'),
-          props: { title: 'Configuración' }
+          component: ConfigurationView,
         },
         {
           path: 'perfil',

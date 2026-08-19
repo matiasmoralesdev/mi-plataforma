@@ -6,7 +6,6 @@ interface MenuSection {
   items: MenuItem[];
 }
 
-// TODO: reemplaza estas secciones/items por el menu real de tu plataforma
 const model: MenuSection[] = [
   {
     label: 'Inicio',

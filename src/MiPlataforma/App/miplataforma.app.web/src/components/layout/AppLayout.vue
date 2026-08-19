@@ -16,10 +16,8 @@ watch(
 </script>
 
 <template>
-  <div
-    class="layout-wrapper layout-static"
-    :class="{ 'layout-static-inactive': isSidebarCollapsed, 'layout-mobile-active': isMobileMenuActive }"
-  >
+  <div class="layout-wrapper layout-static"
+    :class="{ 'layout-static-inactive': isSidebarCollapsed, 'layout-mobile-active': isMobileMenuActive }">
     <AppTopbar />
     <AppSidebar />
 
@@ -32,4 +30,5 @@ watch(
 
     <div class="layout-mask" @click="hideMobileMenu"></div>
   </div>
+  <Toast />
 </template>
