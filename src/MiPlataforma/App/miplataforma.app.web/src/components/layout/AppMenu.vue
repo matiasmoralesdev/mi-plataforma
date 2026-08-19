@@ -6,10 +6,7 @@ interface MenuSection {
   items: MenuItem[];
 }
 
-defineProps<{
-  collapsed?: boolean;
-}>();
-
+// TODO: reemplaza estas secciones/items por el menu real de tu plataforma
 const model: MenuSection[] = [
   {
     label: 'Inicio',
@@ -30,12 +27,12 @@ const model: MenuSection[] = [
 </script>
 
 <template>
-  <nav class="py-3">
-    <ul v-for="section in model" :key="section.label" class="list-none m-0 p-0 mb-2">
-      <li v-if="!collapsed" class="px-5 pt-3 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-color">
-        {{ section.label }}
-      </li>
-      <AppMenuItem v-for="item in section.items" :key="item.label" :item="item" :collapsed="collapsed" />
-    </ul>
-  </nav>
+  <ul class="layout-menu">
+    <li v-for="section in model" :key="section.label" class="layout-root-menuitem">
+      <div class="layout-menuitem-root-text">{{ section.label }}</div>
+      <ul class="layout-menu-section">
+        <AppMenuItem v-for="item in section.items" :key="item.label" :item="item" />
+      </ul>
+    </li>
+  </ul>
 </template>

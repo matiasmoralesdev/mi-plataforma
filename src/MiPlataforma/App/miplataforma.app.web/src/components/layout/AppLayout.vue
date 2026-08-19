@@ -6,7 +6,7 @@ import AppSidebar from './AppSidebar.vue';
 import AppFooter from './AppFooter.vue';
 import { useLayout } from './composables/layout';
 
-const { isSidebarCollapsed, hideMobileMenu } = useLayout();
+const { isSidebarCollapsed, isMobileMenuActive, hideMobileMenu } = useLayout();
 
 const route = useRoute();
 watch(
@@ -16,16 +16,20 @@ watch(
 </script>
 
 <template>
-  <div class="min-h-screen bg-surface-50 dark:bg-surface-950">
+  <div
+    class="layout-wrapper layout-static"
+    :class="{ 'layout-static-inactive': isSidebarCollapsed, 'layout-mobile-active': isMobileMenuActive }"
+  >
     <AppTopbar />
     <AppSidebar />
 
-    <div class="flex flex-col min-h-screen pt-16 transition-all duration-200"
-      :class="isSidebarCollapsed ? 'lg:pl-[4.5rem]' : 'lg:pl-64'">
-      <main class="flex-1 p-6">
+    <div class="layout-main-container">
+      <main class="layout-main">
         <router-view />
       </main>
       <AppFooter />
     </div>
+
+    <div class="layout-mask" @click="hideMobileMenu"></div>
   </div>
 </template>

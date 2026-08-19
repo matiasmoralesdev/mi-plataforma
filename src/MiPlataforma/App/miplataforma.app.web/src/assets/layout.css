@@ -1,0 +1,324 @@
+/* Design tokens mapped from PrimeVue's Aura theme CSS variables (no Sass needed) */
+:root {
+  --primary-color: var(--p-primary-color);
+  --text-color: var(--p-text-color);
+  --text-color-secondary: var(--p-text-muted-color);
+  --surface-border: var(--p-content-border-color);
+  --surface-card: var(--p-content-background);
+  --surface-hover: var(--p-content-hover-background);
+  --surface-overlay: var(--p-overlay-popover-background);
+  --content-border-radius: var(--p-content-border-radius);
+  --layout-section-transition-duration: 0.2s;
+  --element-transition-duration: var(--p-transition-duration);
+  --maskbg: var(--p-mask-background);
+}
+
+body {
+  margin: 0;
+  color: var(--text-color);
+  background-color: var(--p-surface-50);
+}
+
+.app-dark body {
+  background-color: var(--p-surface-950);
+}
+
+.layout-wrapper {
+  min-height: 100vh;
+}
+
+/* Topbar */
+.layout-topbar {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: 4rem;
+  z-index: 997;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--surface-card);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.layout-topbar-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.layout-topbar-logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.layout-topbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.layout-topbar-action {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color var(--element-transition-duration);
+}
+
+.layout-topbar-action:hover {
+  background-color: var(--surface-hover);
+}
+
+.layout-topbar-action i {
+  font-size: 1.25rem;
+}
+
+/* Profile floating panel */
+.layout-topbar-menu {
+  position: absolute;
+  top: 3.25rem;
+  right: 0;
+  min-width: 12rem;
+  padding: 0.5rem;
+  background-color: var(--surface-overlay);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--content-border-radius);
+  box-shadow:
+    0px 3px 5px rgba(0, 0, 0, 0.02),
+    0px 0px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.layout-topbar-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--content-border-radius);
+  color: var(--text-color);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--element-transition-duration);
+}
+
+.layout-topbar-menu-item:hover {
+  background-color: var(--surface-hover);
+}
+
+@keyframes p-anchored-overlay-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.p-anchored-overlay-enter-active {
+  animation: p-anchored-overlay-enter 0.12s ease-out;
+}
+
+.p-anchored-overlay-leave-active {
+  animation: p-anchored-overlay-enter 0.1s ease-in reverse;
+}
+
+/* Sidebar (floating, detached from the edges like Sakai) */
+.layout-sidebar {
+  position: fixed;
+  top: 6rem;
+  left: 2rem;
+  width: 20rem;
+  height: calc(100vh - 8rem);
+  z-index: 999;
+  overflow-y: auto;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--surface-overlay);
+  border-radius: var(--content-border-radius);
+  box-shadow:
+    0px 3px 5px rgba(0, 0, 0, 0.02),
+    0px 0px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 4px rgba(0, 0, 0, 0.08);
+  transition:
+    transform var(--layout-section-transition-duration),
+    left var(--layout-section-transition-duration);
+}
+
+/* Menu */
+.layout-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.layout-menu-section {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.layout-menuitem-root-text {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-color-secondary);
+  margin: 0.75rem 0.5rem;
+}
+
+.layout-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: var(--content-border-radius);
+  text-decoration: none;
+  transition: background-color var(--element-transition-duration);
+}
+
+.layout-menu a:hover {
+  background-color: var(--surface-hover);
+}
+
+.layout-menu a.active-route {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.layout-menuitem-icon {
+  font-size: 1rem;
+}
+
+.layout-submenu-toggler {
+  margin-left: auto;
+  font-size: 0.75rem;
+  transition: transform var(--element-transition-duration);
+}
+
+.layout-submenu-toggler.rotated {
+  transform: rotate(-180deg);
+}
+
+.layout-submenu-enter-from,
+.layout-submenu-leave-to {
+  max-height: 0;
+}
+
+.layout-submenu-enter-to,
+.layout-submenu-leave-from {
+  max-height: 1000px;
+}
+
+.layout-submenu-enter-active {
+  overflow: hidden;
+  transition: max-height 1s ease-in-out;
+}
+
+.layout-submenu-leave-active {
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
+}
+
+/* Main content + footer */
+.layout-main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 6rem 2rem 0 2rem;
+  transition: margin-left var(--layout-section-transition-duration);
+}
+
+.layout-main {
+  flex: 1 1 auto;
+  padding-bottom: 2rem;
+}
+
+.layout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  color: var(--text-color-secondary);
+  border-top: 1px solid var(--surface-border);
+}
+
+.layout-mask {
+  display: none;
+}
+
+/* Desktop: static floating sidebar that can be hidden */
+@media (min-width: 992px) {
+  .layout-wrapper.layout-static .layout-main-container {
+    margin-left: 22rem;
+  }
+
+  .layout-wrapper.layout-static.layout-static-inactive .layout-sidebar {
+    transform: translateX(-100%);
+    left: 0;
+  }
+
+  .layout-wrapper.layout-static.layout-static-inactive .layout-main-container {
+    margin-left: 0;
+    padding-left: 2rem;
+  }
+}
+
+/* Mobile: sidebar becomes a full-height overlay with a mask */
+@media (max-width: 991px) {
+  .layout-main-container {
+    margin-left: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .layout-sidebar {
+    transform: translateX(-100%);
+    left: 0;
+    top: 0;
+    height: 100vh;
+    border-radius: 0;
+    transition:
+      transform 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99),
+      left 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+  }
+
+  .layout-mask {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background-color: var(--maskbg);
+  }
+
+  .layout-wrapper.layout-mobile-active .layout-sidebar {
+    transform: translateX(0);
+  }
+
+  .layout-wrapper.layout-mobile-active .layout-mask {
+    display: block;
+  }
+}
+
+/* Generic elevated panel, reused across blank pages */
+.card {
+  background: var(--surface-card);
+  padding: 1.5rem;
+  border-radius: var(--content-border-radius);
+}

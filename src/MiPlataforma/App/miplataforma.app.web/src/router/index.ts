@@ -31,6 +31,12 @@ const router = createRouter({
           name: 'configuracion',
           component: () => import('@/views/PlaceholderView.vue'),
           props: { title: 'Configuración' }
+        },
+        {
+          path: 'perfil',
+          name: 'perfil',
+          component: () => import('@/views/PlaceholderView.vue'),
+          props: { title: 'Perfil' }
         }
       ]
     }
